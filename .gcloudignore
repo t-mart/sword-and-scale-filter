@@ -1,0 +1,14 @@
+# include everything in gitignore
+#!include:.gitignore
+
+# undo the ignore of requirements.txt, which is a generated file that cloud
+# functions needs
+!requirements.txt
+
+# also ignore this. this is a unique to my local environment and is specified
+# in my user-level gitignore, but gcloud doesn't know to look there.
+.venv
+
+# And these too:
+Makefile
+README.md

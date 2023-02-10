@@ -1,0 +1,7 @@
+feed.xml
+requirements.txt
+dist
+__pycache__
+.mypy_cache
+poetry.lock
+pyproject.toml
