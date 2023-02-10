@@ -15,6 +15,7 @@ DEBUG_ENV_VAR = "DEBUG"
 CLIENT = httpx.Client()
 PARSER = etree.XMLParser(strip_cdata=False)
 
+
 @frozen
 class Episode:
     title: str
@@ -22,12 +23,13 @@ class Episode:
     TITLE_PATTERNS: ClassVar[list[str]] = [
         r"\s?Sword and Scale Episode \d+",
         r"\s?\+PLUS \d+",
-        r".*Secret Episode"
+        r".*Secret Episode",
     ]
 
     @property
     def is_good(self) -> bool:
         return any(re.match(pattern, self.title) for pattern in self.TITLE_PATTERNS)
+
 
 def get_rss_content() -> bytes:
     if os.environ.get(DEBUG_ENV_VAR, False):
@@ -57,7 +59,7 @@ def handle_zero_division(e: Exception) -> flask.Response:
 def filter_func(cf_request: flask.Request) -> flask.Response:
     root = etree.XML(get_rss_content(), parser=PARSER)
 
-    channel = root.find('channel')
+    channel = root.find("channel")
     if channel is None:
         raise ValueError("No channel tag")
 
