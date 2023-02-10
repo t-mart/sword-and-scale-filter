@@ -11,5 +11,8 @@ function from the root directory of this project:
 make deploy
 ```
 
-There's definitely some undocumented stuff. Snoop around and see what you can figure from beyond
-this readme.
+After that's done, look at the GCP console for the URL, and bam! Bob's your uncle. Can throw that in
+a supporting podcast app.
+
+There's definitely some undocumented stuff here. Setting up cloud infra is easier in the web console
+once than repeatably on the command line.
