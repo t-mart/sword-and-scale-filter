@@ -1,16 +1,16 @@
-.PHONY: export
+.PHONY: export_requirements deploy
 
 all: deploy
 
-export:
+export_requirements:
 	poetry export -f requirements.txt -o requirements.txt
 
-deploy: export
+deploy: export_requirements
 	gcloud functions deploy filter\
-	 --source .\
-	 --region=us-central1 \
-	 --trigger-http \
-	 --runtime python311 \
+	  --source .\
+	  --region=us-central1 \
+	  --trigger-http \
+	  --runtime python311 \
 	  --allow-unauthenticated \
 	  --entry-point filter_func \
 	  --gen2 \
